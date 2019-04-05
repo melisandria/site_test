@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 
 <html lang='fr'>
@@ -37,7 +39,7 @@
       <article>
 
         <?php include("inc/connexion.inc.php");
-                echo "<p>Liste des articles </p>";
+        echo "<p>Liste des articles </p>";
 		
 		//nb de lignes contenu dans résultat
 
@@ -50,7 +52,7 @@
 		echo "<td><p>Lien pour modifier l'article</p></td>";
 		echo "</tr>\n";
 		
-        $requete = "select content.titre, content.categoriearticle, content.idarticle, content.datemodificationarticle, user.login from content, user";			
+        $requete = "select titre, categoriearticle, idarticle, datemodificationarticle, nomusermodificationarticle from content";			
         $resultat = $con->query($requete);
 		
 	    while ($nbutilisateurs = $resultat->fetch()) {
@@ -62,7 +64,7 @@
 		echo "<td>".$nbutilisateurs['titre']. "</td>\n";
         echo "<td>".$nbutilisateurs['categoriearticle']. "</td>\n";
 		echo "<td>".$nbutilisateurs['datemodificationarticle']. "</td>\n";
-		echo "<td>".$nbutilisateurs['login']. "</td>\n";
+		echo "<td>".$nbutilisateurs['nomusermodificationarticle']. "</td>\n";
         echo '<td>'.'<a href="'.$url.'">lien pour modifier l article</td>'.'</a>';
 		echo "</tr>\n";
 		}

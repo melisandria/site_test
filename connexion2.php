@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html lang='fr'>
 	<head>
@@ -54,6 +56,8 @@
             $requete = "SELECT * FROM user WHERE login = '".$login."' AND password = '".$password."'";		
             $resultat = $con->query($requete);
               if($connexion = $resultat->fetch()) {
+                $_SESSION['login']  = $_GET['login'];
+			    $_SESSION['password']  = $_GET['password'];
                 echo '<script type="text/javascript">';
                 echo 'window.location.href="'.$page.'";';
                 echo '</script>';

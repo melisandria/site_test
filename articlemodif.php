@@ -1,3 +1,5 @@
+<?php session_start();
+?>	
 <!DOCTYPE html>
 
 <html lang='fr'>
@@ -41,7 +43,8 @@
 		      <div id="nom">
                 <label for="nom">*Article à modifier:</label>
 				
-                <?php include("inc/connexion.inc.php");	
+                <?php include("inc/connexion.inc.php");
+		
 				      $requete = 'select titre, categoriearticle, datemodificationarticle from content where idarticle ="'.$_GET ['idarticle'].'"';		
 
                 
@@ -55,12 +58,13 @@
 		              echo "<td><p>Titre de l'article</p></td>";
                       echo "<td><p>Catégorie de l'article</p></td>";
 		              echo "<td><p>Date de la dernière modification de l'article</p></td>";
-		              echo "<td><p>Login de la personne ayant modifié l'article</p></td>";
+		              echo "<td><p>Login de la personne connectée</p></td>";
 		              echo "</tr>\n";
 					  echo "<tr>\n";?>
 					  <td><input id="titre" type="text" name="titre" value="<?php echo "".$nbutilisateurs['titre'].""?>"></td>
 					  <td><input id="categoriearticle" type="text" name="categoriearticle" value="<?php echo "".$nbutilisateurs['categoriearticle'].""?>"></td>
 					  <td><input id="datemodificationarticle" type="text" name="datemodificationarticle" value="<?php echo "".$nbutilisateurs['datemodificationarticle'].""?>"></td>
+					  <td><?php echo "".$_SESSION['login'].""?></td>
 					  <input type="hidden" name="idarticle" value="<?php echo "".$_GET ['idarticle'].""?>">
 		              <?php
 		                                                            }
