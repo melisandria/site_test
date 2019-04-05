@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 
 <html lang='fr'>
@@ -33,10 +35,10 @@
         </ul>
       </nav>
       <article>
-		<?php include("inc/connexion.inc.php");	
+		<?php include("inc/connexion.inc.php");
           $date = date("Y-m-d H:i:s");		
 	      if(isset($_POST["Modifier"])){
-		    $requete = 'update content set titre ="'.$_POST ['titre'].'", categoriearticle ="'.$_POST ['categoriearticle'].'", datemodificationarticle="'.$date.'" where idarticle ="'.$_POST ['idarticle'].'"';
+		    $requete = 'update content set titre ="'.$_POST ['titre'].'", categoriearticle ="'.$_POST ['categoriearticle'].'", datemodificationarticle="'.$date.'", nomusermodificationarticle="'.$_SESSION['login'].'" where idarticle ="'.$_POST ['idarticle'].'"';
 		    $con->exec($requete);
 		    echo "Les modifications ont bien été prises en compte";
 
@@ -44,7 +46,7 @@
 		
 		?>
       </article>
-      <input class="retour" type="button" value="&larr; Retour" onclick="self.location.href='backoffice.php'">
+      <input class="retour" type="button" value="&larr; Retour à la page de modification des articles" onclick="self.location.href='backoffice.php'">
     </div>
 		<footer>
 			<p>Copyright Bourdain Loïc et Tommy - <a href="mention-legale.html">Mentions légales</a></p>
